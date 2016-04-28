@@ -25,7 +25,6 @@ class GettyimagesAPI {
   }
   
   private class func photoFromJSONObject (json: [String : AnyObject]) -> PhotoModel? {
-   
     
     guard let
       photoURLString = json["uri"] as? String,
@@ -47,18 +46,20 @@ class GettyimagesAPI {
       let jsonObject: AnyObject = try NSJSONSerialization.JSONObjectWithData(data, options: [])
       
       guard let jsonDictionary = jsonObject as? [NSObject:AnyObject],
-        resultCount = jsonDictionary["result_count"] as? Int,
-        photos = jsonDictionary["images"] as? [[String:AnyObject]],
-        photoArray = photos[0]["display_sizes"]?[0] as? [String:AnyObject] else {
-          
+        resultCount = jsonDictionary["result_count"] as? Int where resultCount != 0 else {
           // The JSON structure doesn't match our expectations
+          return .Failure(ApiError.NoDataToProceed)
+      }
+      
+       guard let  photos = jsonDictionary["images"] as? [[String:AnyObject]],
+        photoArray = photos[0]["display_sizes"]?[0] as? [String:AnyObject] else {
           return .Failure(ApiError.InvalidJSONData)
       }
       
       print("resultCount", resultCount)
       
       guard let finalPhoto = photoFromJSONObject(photoArray) else {
-        return .Failure(ApiError.UnexpectedError)
+        return .Failure(ApiError.InvalidJSONData)
       }
       
       if finalPhoto.articleURL.absoluteString == "" && photoArray.count > 0 {
@@ -66,6 +67,7 @@ class GettyimagesAPI {
         // Maybe the JSON format for photos has changed.
         return .Failure(ApiError.InvalidJSONData)
       }
+      
       return .Success(finalPhoto)
     }
     catch let error {

@@ -98,7 +98,7 @@ class NewsTableViewController: UITableViewController {
       if [NSLinguisticTagNoun, NSLinguisticTagPersonalName, NSLinguisticTagPlaceName, NSLinguisticTagOrganizationName].contains(tag) {
         properNouns.append(token)
       } else {
-        print("We don't need these words:", token)
+        print("We don't need these word:", token)
       }
     }
     
