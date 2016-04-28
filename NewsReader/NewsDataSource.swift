@@ -5,6 +5,8 @@
 //  Created by Sasha Minikin on 4/27/16.
 //  Copyright © 2016 Sasha Prokhorenko. All rights reserved.
 //
+//  Abstract:
+//  NewsDataSource class responsible for responding to data source (UITableViewDataSource)
 
 import UIKit
 

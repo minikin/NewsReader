@@ -5,6 +5,8 @@
 //  Created by Sasha Minikin on 4/27/16.
 //  Copyright © 2016 Sasha Prokhorenko. All rights reserved.
 //
+//  Abstract:
+//  NewsStore class responsible for initiating the web services requests
 
 import UIKit
 

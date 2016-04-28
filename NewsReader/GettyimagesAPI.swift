@@ -5,6 +5,10 @@
 //  Created by Sasha Minikin on 4/28/16.
 //  Copyright © 2016 Sasha Prokhorenko. All rights reserved.
 //
+//  Abstract:
+//  GettyimagesAPI class responsible for parsing JSON data from Gettyimages
+
+// MARK: - PLEASE, NOTICE Getty Images has RATE LIMIT 5 request per second!
 
 import Foundation
 
@@ -55,7 +59,7 @@ class GettyimagesAPI {
         photoArray = photos[0]["display_sizes"]?[0] as? [String:AnyObject] else {
           return .Failure(ApiError.InvalidJSONData)
       }
-          
+      
       guard let finalPhoto = photoFromJSONObject(photoArray) else {
         return .Failure(ApiError.InvalidJSONData)
       }
