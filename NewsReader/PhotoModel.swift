@@ -26,7 +26,6 @@ class PhotoModel {
       return nil
     }
   }
-  
 
 }
 

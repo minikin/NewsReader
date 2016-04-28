@@ -55,9 +55,7 @@ class GettyimagesAPI {
         photoArray = photos[0]["display_sizes"]?[0] as? [String:AnyObject] else {
           return .Failure(ApiError.InvalidJSONData)
       }
-      
-      print("resultCount", resultCount)
-      
+          
       guard let finalPhoto = photoFromJSONObject(photoArray) else {
         return .Failure(ApiError.InvalidJSONData)
       }

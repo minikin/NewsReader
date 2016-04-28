@@ -12,7 +12,7 @@ class ArticleModel {
   
   // MARK: Properties
   
-  let articleID: Double
+  let articleID: Int
   let title: String
   let abstract: String
   let articleURL: NSURL
@@ -20,7 +20,7 @@ class ArticleModel {
   
   // MARK: Initialization
   
-  init?(articleID:Double, title:String, abstract: String, articleURL:NSURL, publishedDate:String) {
+  init?(articleID:Int, title:String, abstract: String, articleURL:NSURL, publishedDate:String) {
     self.articleID = articleID
     self.title = title
     self.abstract = abstract

@@ -102,7 +102,7 @@ class NewsTableViewController: UITableViewController {
       }
     }
     
-    print("searchNoun:=>", properNouns.first!)
+    print("searchWord:=>", properNouns.first!)
     
     return properNouns.first!
   }

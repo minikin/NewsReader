@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE2272531CD29296003DB71C /* ArticleModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2272521CD29296003DB71C /* ArticleModelTests.swift */; };
 		CE4FF8C21CD135F600FA852C /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4FF8C11CD135F600FA852C /* NewsTableViewController.swift */; };
 		CE4FF8C41CD1361500FA852C /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4FF8C31CD1361500FA852C /* NewsTableViewCell.swift */; };
 		CE4FF8C61CD1374900FA852C /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4FF8C51CD1374900FA852C /* ArticleModel.swift */; };
@@ -19,7 +20,6 @@
 		CE7B94EA1CD0F45F004BD713 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7B94E81CD0F45F004BD713 /* Main.storyboard */; };
 		CE7B94EC1CD0F45F004BD713 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7B94EB1CD0F45F004BD713 /* Assets.xcassets */; };
 		CE7B94EF1CD0F45F004BD713 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7B94ED1CD0F45F004BD713 /* LaunchScreen.storyboard */; };
-		CE7B94FA1CD0F45F004BD713 /* NewsReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B94F91CD0F45F004BD713 /* NewsReaderTests.swift */; };
 		CE7B95051CD0F45F004BD713 /* NewsReaderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B95041CD0F45F004BD713 /* NewsReaderUITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE2272521CD29296003DB71C /* ArticleModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleModelTests.swift; sourceTree = "<group>"; };
 		CE4FF8C11CD135F600FA852C /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		CE4FF8C31CD1361500FA852C /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		CE4FF8C51CD1374900FA852C /* ArticleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
@@ -56,7 +57,6 @@
 		CE7B94EE1CD0F45F004BD713 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE7B94F01CD0F45F004BD713 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE7B94F51CD0F45F004BD713 /* NewsReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE7B94F91CD0F45F004BD713 /* NewsReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsReaderTests.swift; sourceTree = "<group>"; };
 		CE7B94FB1CD0F45F004BD713 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE7B95001CD0F45F004BD713 /* NewsReaderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsReaderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7B95041CD0F45F004BD713 /* NewsReaderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsReaderUITests.swift; sourceTree = "<group>"; };
@@ -125,8 +125,8 @@
 		CE7B94F81CD0F45F004BD713 /* NewsReaderTests */ = {
 			isa = PBXGroup;
 			children = (
-				CE7B94F91CD0F45F004BD713 /* NewsReaderTests.swift */,
 				CE7B94FB1CD0F45F004BD713 /* Info.plist */,
+				CE2272521CD29296003DB71C /* ArticleModelTests.swift */,
 			);
 			path = NewsReaderTests;
 			sourceTree = "<group>";
@@ -341,7 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE7B94FA1CD0F45F004BD713 /* NewsReaderTests.swift in Sources */,
+				CE2272531CD29296003DB71C /* ArticleModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,10 +497,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = NewsReaderTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.minikin.NewsReaderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NewsReader.app/NewsReader";
 			};
 			name = Debug;
@@ -509,6 +511,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = NewsReaderTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.minikin.NewsReaderTests;

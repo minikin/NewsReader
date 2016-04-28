@@ -65,7 +65,7 @@ class NYTimesMostPopularAPI {
   private class func articleFromJSONObject(json: [String : AnyObject]) -> ArticleModel? {
     
     guard let 
-      articleID = json["id"] as? Double,
+      articleID = json["id"] as? Int,
       title = json["title"] as? String,
       abstract = json["abstract"] as? String,
       publishedDate = json["published_date"] as? String,
