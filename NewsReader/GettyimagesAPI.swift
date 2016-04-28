@@ -49,11 +49,13 @@ class GettyimagesAPI {
       guard let jsonDictionary = jsonObject as? [NSObject:AnyObject],
         resultCount = jsonDictionary["result_count"] as? Int,
         photos = jsonDictionary["images"] as? [[String:AnyObject]],
-        photoArray = photos[0]["display_sizes"]?[0] as? [String:AnyObject] where resultCount != 0 else {
+        photoArray = photos[0]["display_sizes"]?[0] as? [String:AnyObject] else {
           
           // The JSON structure doesn't match our expectations
           return .Failure(ApiError.InvalidJSONData)
       }
+      
+      print("resultCount", resultCount)
       
       guard let finalPhoto = photoFromJSONObject(photoArray) else {
         return .Failure(ApiError.UnexpectedError)

@@ -44,11 +44,9 @@ class NewsTableViewController: UITableViewController {
     
     let article = articleDataSource.articles[indexPath.row]
     
-    let searchNoun = findProperNoun(question: article.title)
+    let stringToProcess = article.title
     
-    print("searchNoun", searchNoun)
-    
-    store.fetchPhoto(searchPhrase: searchNoun) {
+    store.fetchPhoto(searchPhrase: findProperNoun(question: stringToProcess)) {
       (photoResult) -> Void in
       
       switch photoResult {
@@ -86,18 +84,25 @@ class NewsTableViewController: UITableViewController {
     var properNouns: [String] = []
     
     print("Title:", question)
-    let options: NSLinguisticTaggerOptions = [.OmitWhitespace, .OmitPunctuation, .JoinNames]
+    
+    let options: NSLinguisticTaggerOptions = [.OmitWhitespace, .OmitPunctuation, .JoinNames, .OmitOther]
     let schemes = NSLinguisticTagger.availableTagSchemesForLanguage("en")
     let tagger = NSLinguisticTagger(tagSchemes: schemes, options: Int(options.rawValue))
+    
     tagger.string = question
-    tagger.enumerateTagsInRange(NSMakeRange(0, (question as NSString).length), scheme: NSLinguisticTagSchemeNameTypeOrLexicalClass, options: options) { (tag, tokenRange, _, _) in
+    
+    tagger.enumerateTagsInRange(NSMakeRange(0, question.characters.count), scheme: NSLinguisticTagSchemeNameTypeOrLexicalClass, options: options) { (tag, tokenRange, _, _) in
+      
       let token = (question as NSString).substringWithRange(tokenRange)
       
-      if [NSLinguisticTagPersonalName, NSLinguisticTagPlaceName, NSLinguisticTagOrganizationName, NSLinguisticTagNoun].contains(tag) {
+      if [NSLinguisticTagNoun, NSLinguisticTagPersonalName, NSLinguisticTagPlaceName, NSLinguisticTagOrganizationName].contains(tag) {
         properNouns.append(token)
-        print("Array:", properNouns)
+      } else {
+        print("We don't need these words:", token)
       }
     }
+    
+    print("searchNoun:=>", properNouns.first!)
     
     return properNouns.first!
   }

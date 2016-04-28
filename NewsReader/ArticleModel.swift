@@ -31,7 +31,6 @@ class ArticleModel {
     if title.isEmpty {
       return nil
     }
-  
   }
 }
 
