@@ -6,7 +6,7 @@
 //  Copyright © 2016 Sasha Prokhorenko. All rights reserved.
 //
 //  Abstract:
-//  NYTimesMostPopularAPI class responsible for parsing JSON data NYTimes
+//  NYTimesMostPopularAPI class responsible for parsing JSON data of NYTimes
 
 import Foundation
 

@@ -79,6 +79,8 @@ class NewsTableViewController: UITableViewController {
  
   }
   
+  // NSLinguisticTagger
+  
   func findProperNoun(question question: String) -> String {
 
     var properNouns: [String] = []
@@ -102,9 +104,10 @@ class NewsTableViewController: UITableViewController {
       }
     }
     
-    print("searchWord:=>", properNouns.first!)
-    
-    return properNouns.first!
+    guard let firstNoun = properNouns.first else {
+      return "Can't fine firstNoun"
+    }
+    return firstNoun
   }
   
   
